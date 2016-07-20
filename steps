@@ -1,0 +1,21 @@
+Steps:
+
+Install Python 2.7. https://www.python.org/downloads/
+[Optional] Install pip to easily get packages. https://packaging.python.org/en/latest/installing/
+Install beautifulsoup for web scrapping. In cmd, type pip install beautifulsoup4
+Install xlwings for excel connection with python code. In cmd, type pip install xlwings.
+[Optional] Error might occur while installing xlwings, prompting to install win32api. Download appropriate file from here. https://sourceforge.net/projects/pywin32/files/pywin32/
+After successfully installing both beautifulsoup and xlwings write python code and save in a directory. ( e.g. mymodule.py )
+Open a new Excel file and save it in the same directory. ( e.g. Book1.xlsm ). Don’t forget to save in xlsm format. It’s for macros enabled files.
+I have used Sheet 1 and cell C2 (or 3,2 ) for URL insertion. You can use another cell also. Note down the cell number used.
+Press Alt + F11.
+Microsoft visual basic will open.
+Go to File -> Import File. Now you have to import xlwings.bas file. This file can be found in C:\Python27\Lib\site-packages\xlwings.
+After successfully importing above file, make a retrieve button.
+For button, go to Developer Tab in excel -> Insert -> ActiveX controls -> Command Button.
+After making the button, copy the following code in button macros code area.
+Sub CommandButton1_Click() RunPython (&quot;import mymodule; mymodule.get_data()&quot;) End Sub
+
+Enter the URL in appropriate area and hit Retrieve button.
+Data will be scraped automatically.
+For pivot table, select the data and go to Insert Tab -> Pivot table.
